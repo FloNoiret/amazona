@@ -72,7 +72,7 @@ export default function CartScreen() {
                       <i className="fas fa-plus-circle"></i>
                     </button>
                   </li>
-                  <li className="cart-details-items">${item.price}</li>
+                  <li className="cart-details-items">{item.price} €</li>
                   <li>
                     <button onClick={() => removeItemHandler(item)}>
                       <i className="fas fa-trash"></i>
@@ -91,7 +91,7 @@ export default function CartScreen() {
               <li>
                 <h3>
                   Total ({cartItems.reduce((a, c) => a + c.quantity, 0)} items)
-                  : ${cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
+                  :  {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)} €
                 </h3>
               </li>
               <li>

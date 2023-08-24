@@ -45,7 +45,7 @@ function HomeScreen() {
   // Show list of Product
   return (
     <div>
-      <h1> Featured Products</h1>
+      <h1> Produits Populaires </h1>
 
       <div className="products">
         {loading ? (
