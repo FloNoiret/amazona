@@ -1,29 +1,35 @@
 import { useContext } from "react";
 import { Store } from "../Store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function CartScreen() {
+  const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
 
-// btn + and - update cart
+  // btn + and - update cart
   const updateCartHandler = async (item, quantity) => {
     const { data } = await axios.get(`/api/products/${item._id}`);
     if (data.countInStock < quantity) {
-      window.alert('Sorry. Product is out of stock');
+      window.alert("Sorry. Product is out of stock");
       return;
     }
     ctxDispatch({
-      type: 'CART_ADD_ITEM',
+      type: "CART_ADD_ITEM",
       payload: { ...item, quantity },
     });
   };
-// btn trash remove
+  // btn trash remove
   const removeItemHandler = (item) => {
-    ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+    ctxDispatch({ type: "CART_REMOVE_ITEM", payload: item });
+  };
+
+  // Redirect to signIn page when btn paiement is clicked
+  const checkoutHandler = () => {
+    navigate("/signin?redirect=/shipping");
   };
 
   // Website page
@@ -84,14 +90,14 @@ export default function CartScreen() {
             <ul>
               <li>
                 <h3>
-                  Total ({cartItems.reduce((a, c) => a + c.quantity, 0)}{" "}
-                  items) : $
-                  {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
+                  Total ({cartItems.reduce((a, c) => a + c.quantity, 0)} items)
+                  : ${cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
                 </h3>
               </li>
               <li>
                 <div className="d-grid">
                   <button
+                    onClick={checkoutHandler}
                     type="button"
                     className="btn-cart"
                     disabled={cartItems.length === 0}
@@ -105,6 +111,5 @@ export default function CartScreen() {
         </div>
       </section>
     </div>
-
   );
 }
