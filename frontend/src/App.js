@@ -16,7 +16,7 @@ function App() {
           <Link to="/"> Amazona</Link>
           <nav>
             <Link to="/cart" className="cart-icone">
-             <div>Panier</div> {cart.cartItems.length > 0 && <div className="cart-number">{cart.cartItems.length}</div>}
+             <div>Panier</div> {cart.cartItems.length > 0 && <div className="cart-number">{cart.cartItems.reduce((a, c) => a + c.quantity, 0)}</div>}
             </Link>
           </nav>
         </header>
