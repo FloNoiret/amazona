@@ -63,7 +63,7 @@ function HomeScreen() {
                 <Link to={`/product/${product.slug}`}>
                   <p>{product.name}</p>
                 </Link>
-                <Rating class="rating" rating={product.rating} numReviews={product.numReviews}/>
+                <Rating className="rating" rating={product.rating} numReviews={product.numReviews}/>
                 <p>
                   <strong>{product.price} € </strong>
                 </p>

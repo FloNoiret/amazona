@@ -22,6 +22,7 @@ main {
   padding: 1rem; 
 }
 
+/* Home Page */
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -56,4 +57,25 @@ main {
   padding-right: 20px;
   box-shadow: 0px 2px 5px gainsboro;
   cursor: pointer;
+}
+
+/* Product Page */
+.page-product {
+ width: 100%;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+.large-img {
+  width: 500px;
+  padding: 5rem; 
+}
+
+.product-details {
+  padding: 5rem ;
+}
+
+.unavailbale-product{
+  color:red; 
 }

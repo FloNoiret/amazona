@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header>
-          <Link to="/">Amazona</Link>
+          <Link to="/"> Amazona</Link>
         </header>
         <main>
           <Routes>
