@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import logger from "use-reducer-logger";
+import Rating from "../components/Rating";
 
 // Reducer Hook
 const reducer = (state, action) => {
@@ -62,11 +63,12 @@ function HomeScreen() {
                 <Link to={`/product/${product.slug}`}>
                   <p>{product.name}</p>
                 </Link>
+                <Rating class="rating" rating={product.rating} numReviews={product.numReviews}/>
                 <p>
                   <strong>{product.price} € </strong>
                 </p>
 
-                <button>Ajouter au panier</button>
+                <button class="btn-cart">Ajouter au panier</button>
               </div>
             </div>
           ))

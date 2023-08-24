@@ -41,3 +41,19 @@ main {
 .product-info{
   padding: 1rem;
 }
+
+.rating span {
+  color:gold;
+}
+
+.btn-cart {
+  background-color: gold;
+  color: black; 
+  border-radius: 20px;
+  border: none;
+  padding: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0px 2px 5px gainsboro;
+  cursor: pointer;
+}
