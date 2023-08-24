@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import logger from "use-reducer-logger";
 import Rating from "../components/Rating";
+import { Store } from "../Store";
+import Product from "../components/Product";
 
 // Reducer Hook
 const reducer = (state, action) => {
@@ -19,18 +21,14 @@ const reducer = (state, action) => {
 };
 
 function HomeScreen() {
-  const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
+  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
     products: [],
     loading: true,
     error: "",
   });
-
-  // Fetch Product from Backend
   // const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      // const result = await axios.get('/api/products');
-
       dispatch({ type: "FETCH_REQUEST" });
       try {
         const result = await axios.get("/api/products");
@@ -38,6 +36,7 @@ function HomeScreen() {
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: err.message });
       }
+
       // setProducts(result.data);
     };
     fetchData();
@@ -54,24 +53,8 @@ function HomeScreen() {
         ) : error ? (
           <div>{error}</div>
         ) : (
-          products.map((product) => (
-            <div className="product" key={product.slug}>
-              <Link to={`/product/${product.slug}`}>
-                <img src={product.image} alt={product.name} />
-              </Link>
-              <div className="product-info">
-                <Link to={`/product/${product.slug}`}>
-                  <p>{product.name}</p>
-                </Link>
-                <Rating className="rating" rating={product.rating} numReviews={product.numReviews}/>
-                <p>
-                  <strong>{product.price} € </strong>
-                </p>
-
-                <button class="btn-cart">Ajouter au panier</button>
-              </div>
-            </div>
-          ))
+          products.map((product) => 
+          <Product product={product}></Product>)
         )}
       </div>
     </div>
