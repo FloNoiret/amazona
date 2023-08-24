@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useEffect, useReducer } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Rating from "../components/Rating";
+import { useContext, useEffect, useReducer } from 'react';
+import { Store } from '../Store';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -41,6 +42,16 @@ function ProductScreen() {
     fetchData();
   }, [slug]);
 
+  // Cart
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const addToCartHandler = () => {
+    ctxDispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity: 1 },
+    });
+  };
+
+  // Product
   return loading ? (
     <div> Loading... </div>
   ) : error ? (
@@ -65,12 +76,14 @@ function ProductScreen() {
             </p>
           ) : (
             <p className="unavailbale-product">Produit indisponible</p>
-          )}
+          )} 
         </div>
         {product.countInStock > 0 ? (
-          <button className="btn-cart">Ajouter au panier</button>
+           <button onClick={addToCartHandler} className="btn-cart">
+             Ajouter au Panier
+           </button>
         ) : (
-          <button className="btn-cart">Voir des produits similaires</button>
+          <Link to="/" className="btn-cart">Voir des produits similaires</Link>
         )}
       </div>
     </div>
