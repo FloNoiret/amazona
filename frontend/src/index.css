@@ -23,7 +23,16 @@ main {
   padding: 1rem;
 }
 
-/* Navbar*/
+ul {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+
+}
+
+/* Cart */
 .cart-icone {
   display: flex;
   padding-left: 1rem;
@@ -34,6 +43,22 @@ main {
   color: gold;
   padding-left: 2px;
   font-size: 12px;
+}
+
+.cart-details {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  width: 50%;
+  justify-content: space-around;
+}
+
+.cart-details-items {
+  padding: 1rem;
+}
+
+.img-thumbnail {
+  height: 80px;
 }
 
 /* Home Page */
