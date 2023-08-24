@@ -88,11 +88,11 @@ function ProductScreen() {
           )} 
         </div>
         {product.countInStock > 0 ? (
-           <button onClick={addToCartHandler} className="btn-cart">
+           <button onClick={addToCartHandler} className="btn-gold">
              Ajouter au Panier
            </button>
         ) : (
-          <Link to="/" className="btn-cart">Voir des produits similaires</Link>
+          <Link to="/" className="btn-gold">Voir des produits similaires</Link>
         )}
       </div>
     </div>

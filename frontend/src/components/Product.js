@@ -46,7 +46,7 @@ function Product(props) {
         {product.countInStock === 0 ? (
           <button disabled>Rupture de Stock</button>
         ) : (
-          <button className="btn-cart" onClick={() => addToCartHandler(product)}>
+          <button className="btn-gold" onClick={() => addToCartHandler(product)}>
             Ajouter au Panier
           </button>
         )}

@@ -99,7 +99,7 @@ export default function CartScreen() {
                   <button
                     onClick={checkoutHandler}
                     type="button"
-                    className="btn-cart"
+                    className="btn-gold"
                     disabled={cartItems.length === 0}
                   >
                     Procéder au Paiement
