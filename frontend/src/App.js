@@ -7,6 +7,7 @@ import CartScreen from "./screens/CartScreen";
 import SigninScreen from "./screens/SignInScreen";
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SignupScreen from "./screens/SignUpScreen";
+import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 
 function App() {
   // cart & sign in React Context
@@ -18,6 +19,7 @@ function App() {
     ctxDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
     localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
   };
 
   return (
@@ -71,6 +73,7 @@ function App() {
                 element={<ShippingAddressScreen />}
               ></Route>
                 <Route path="/signup" element={<SignupScreen />} />
+                <Route path="/payment" element={<PaymentMethodScreen />}></Route>
           </Routes>
         </main>
       </div>

@@ -177,7 +177,7 @@ li {
   color: #f08000;
 }
 
-.shipping-page-form {
+.order-process-form {
 display: flex;
 flex-direction: column;
 width: 50%;
@@ -185,12 +185,16 @@ margin-left: 25%;
 margin-right: 25%;
 }
 
-.shipping-form {
+.order-form {
 display: flex;
 flex-direction: column;
 margin: 2rem;
 }
 
-.shipping-form label {
+.order-form label {
   padding-right: 1rem;
+}
+
+.order-form button {
+  width: 20%;
 }

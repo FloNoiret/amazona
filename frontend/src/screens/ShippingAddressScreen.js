@@ -49,10 +49,10 @@ export default function ShippingAddressScreen() {
   return (
     <div>
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <div className="shipping-page-form" >
-        <h1 className="shipping-form shipping-form-title">Adresse de livraison</h1>
+      <div className="order-process-form" >
+        <h1 className="order-form">Adresse de livraison</h1>
         <form onSubmit={submitHandler}>
-          <div  className="shipping-form" controlId="fullName">
+          <div className="order-form" controlId="fullName">
             <label>Nom et Prénom</label>
             <input 
               value={fullName}
@@ -60,7 +60,7 @@ export default function ShippingAddressScreen() {
               required
             />
           </div>
-          <div className="shipping-form" controlId="address">
+          <div className="order-form" controlId="address">
             <label>Votre adresse</label>
             <input
               value={address}
@@ -68,7 +68,7 @@ export default function ShippingAddressScreen() {
               required
             />
           </div>
-          <div className="shipping-form" controlId="city">
+          <div className="order-form" controlId="city">
             <label>Ville</label>
             <input
               value={city}
@@ -76,7 +76,7 @@ export default function ShippingAddressScreen() {
               required
             />
           </div>
-          <div className="shipping-form" controlId="postalCode">
+          <div className="order-form" controlId="postalCode">
             <label>Code Postal</label>
             <input
               value={postalCode}
@@ -84,7 +84,7 @@ export default function ShippingAddressScreen() {
               required
             />
           </div>
-          <div className="shipping-form" controlId="country">
+          <div className="order-form" controlId="country">
             <label>Pays</label>
             <input
               value={country}
@@ -92,7 +92,7 @@ export default function ShippingAddressScreen() {
               required
             />
           </div>
-          <div className="shipping-form">
+          <div className="order-form">
             <button className="btn-gold" type="submit">
               Continuer
             </button>
