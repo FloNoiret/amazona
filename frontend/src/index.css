@@ -156,3 +156,39 @@ li {
 .unavailbale-product {
   color: red;
 }
+
+/* Shipping Page */
+.checkout-steps {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.checkout-steps > li {
+  border: 0.2rem solid #a0a0a0;
+  border-radius: 100px;
+  padding: 1rem;
+  color: #a0a0a0;
+}
+.checkout-steps > li.active {
+  border: 0.2rem solid #f08000;
+  color: #f08000;
+}
+
+.shipping-page-form {
+display: flex;
+flex-direction: column;
+width: 50%;
+margin-left: 25%; 
+margin-right: 25%;
+}
+
+.shipping-form {
+display: flex;
+flex-direction: column;
+margin: 2rem;
+}
+
+.shipping-form label {
+  padding-right: 1rem;
+}
