@@ -6,6 +6,7 @@ import { Store } from "./Store";
 import CartScreen from "./screens/CartScreen";
 import SigninScreen from "./screens/SignInScreen";
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import SignupScreen from "./screens/SignUpScreen";
 
 function App() {
   // cart & sign in React Context
@@ -36,14 +37,13 @@ function App() {
             </nav>
           <div className="sign-header">
             {userInfo ? (
-              <div title={userInfo.name}>
-                <Link to="/profile">
-                  <div>User Profile</div>
+              <div title={userInfo.name} className="sign-header">
+                <Link to="/profile" >
+                  <div>Mon Compte</div>
                 </Link>
                 <Link to="/orderhistory">
-                  <div>Order History</div>
+                  <div>Commandes Passées</div>
                 </Link>
-                <hr />
                 <Link
                   className="btn-gold"
                   to="#signout"
@@ -54,7 +54,7 @@ function App() {
               </div>
             ) : (
               <Link className="btn-gold" to="/signin">
-                Sign In
+                Se Connecter
               </Link>
             )}
           </div>
@@ -70,6 +70,7 @@ function App() {
                 path="/shipping"
                 element={<ShippingAddressScreen />}
               ></Route>
+                <Route path="/signup" element={<SignupScreen />} />
           </Routes>
         </main>
       </div>

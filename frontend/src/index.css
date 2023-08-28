@@ -11,6 +11,7 @@ header {
   background-color: black;
   padding: 1rem;
   display: flex;
+  align-items: center;
 }
 
 header a {
@@ -90,12 +91,13 @@ li {
 
 .sign-header {
   display: flex;
+  flex-direction: row;
   justify-content: end;
   text-align: center;
   font-size: 12px;
   padding: 2px;
-  height: fit-content;
-  width: 50% ;
+  height: 100;
+  width: 50%;
 }
 
 /* Home Page */
