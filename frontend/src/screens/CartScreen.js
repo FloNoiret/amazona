@@ -95,7 +95,7 @@ export default function CartScreen() {
                 </h3>
               </li>
               <li>
-                <div className="d-grid">
+                <div>
                   <button
                     onClick={checkoutHandler}
                     type="button"

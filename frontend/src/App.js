@@ -8,6 +8,7 @@ import SigninScreen from "./screens/SignInScreen";
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SignupScreen from "./screens/SignUpScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 
 function App() {
   // cart & sign in React Context
@@ -74,6 +75,7 @@ function App() {
               ></Route>
                 <Route path="/signup" element={<SignupScreen />} />
                 <Route path="/payment" element={<PaymentMethodScreen />}></Route>
+                <Route path="/placeorder" element={<PlaceOrderScreen />} />
           </Routes>
         </main>
       </div>
