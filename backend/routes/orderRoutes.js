@@ -25,6 +25,16 @@ orderRouter.post(
   })
 );
 
+// Show history
+orderRouter.get(
+  '/mine',
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+    res.send(orders);
+  })
+);
+
 // Get infos from order to display the order
 orderRouter.get(
     '/:id',
@@ -38,6 +48,10 @@ orderRouter.get(
       }
     })
   );
+
+  
+
+  // PAYPAL
   orderRouter.put(
     '/:id/pay',
     isAuth,
