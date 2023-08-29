@@ -1,8 +1,11 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import HomeScreen from "./screens/HomeScreen";
-import ProductScreen from "./screens/ProductScreen";
+
+// DATA
 import { useContext } from "react";
 import { Store } from "./Store";
+// WEBSITE PAGE
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import SigninScreen from "./screens/SignInScreen";
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
@@ -11,18 +14,20 @@ import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from './screens/OrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 function App() {
   // cart & sign in React Context
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
-  // Signout
+  // Signout Removal local stored infos
   const signoutHandler = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
     localStorage.removeItem('shippingAddress');
     localStorage.removeItem('paymentMethod');
+    window.location.href = '/signin';
   };
 
   return (
@@ -83,6 +88,7 @@ function App() {
                 path="/orderhistory"
                 element={<OrderHistoryScreen />}
               ></Route>
+              <Route path="/profile" element={<ProfileScreen />} />
           </Routes>
         </main>
       </div>
