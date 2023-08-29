@@ -1,10 +1,34 @@
-import React, { useContext, useEffect } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import { Store } from "../Store";
 import CheckoutSteps from "../components/CheckoutSteps";
+import Axios from 'axios';
+import React, { useContext, useEffect, useReducer } from 'react';
+import { getError } from '../utils';
 
+// Complete Order
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'CREATE_REQUEST':
+      return { ...state, loading: true };
+    case 'CREATE_SUCCESS':
+      return { ...state, loading: false };
+    case 'CREATE_FAIL':
+      return { ...state, loading: false };
+    default:
+      return state;
+  }
+};
+
+// Display Place Order
 export default function PlaceOrderScreen() {
   const navigate = useNavigate();
+
+  // Complete Order
+  const [{ loading }, dispatch] = useReducer(reducer, {
+    loading: false,
+  });
+  // Display Order
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
@@ -16,7 +40,37 @@ export default function PlaceOrderScreen() {
   cart.taxPrice = round2(0.15 * cart.itemsPrice);
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
-  const placeOrderHandler = async () => {};
+  // Complete Order
+  const placeOrderHandler = async () => {
+    try {
+      dispatch({ type: 'CREATE_REQUEST' });
+
+      const { data } = await Axios.post(
+        '/api/orders',
+        {
+          orderItems: cart.cartItems,
+          shippingAddress: cart.shippingAddress,
+          paymentMethod: cart.paymentMethod,
+          itemsPrice: cart.itemsPrice,
+          shippingPrice: cart.shippingPrice,
+          taxPrice: cart.taxPrice,
+          totalPrice: cart.totalPrice,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
+      ctxDispatch({ type: 'CART_CLEAR' });
+      dispatch({ type: 'CREATE_SUCCESS' });
+      localStorage.removeItem('cartItems');
+      navigate(`/order/${data.order._id}`);
+    } catch (err) {
+      dispatch({ type: 'CREATE_FAIL' });
+      alert(getError(err));
+    }
+  };
 
   useEffect(() => {
     if (!cart.paymentMethod) {
@@ -29,6 +83,7 @@ export default function PlaceOrderScreen() {
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
 
       <h1>Aperçu de la commande</h1>
+      
       <section className="order-details">
         <ul className="order-details-preview">
           <li className="order-details-items">
@@ -103,6 +158,7 @@ export default function PlaceOrderScreen() {
             >
               Commander
             </button>
+            {loading && <p>Loading...</p>}
           </ul>
         </section>
       </section>
