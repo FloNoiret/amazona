@@ -1,9 +1,5 @@
-import { Link } from "react-router-dom";
 import { useContext, useEffect, useReducer, useState } from "react";
 import axios from "axios";
-import logger from "use-reducer-logger";
-import Rating from "../components/Rating";
-import { Store } from "../Store";
 import Product from "../components/Product";
 
 // Reducer Hook
@@ -60,4 +56,5 @@ function HomeScreen() {
     </div>
   );
 }
+
 export default HomeScreen;

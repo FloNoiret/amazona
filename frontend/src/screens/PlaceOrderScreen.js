@@ -1,4 +1,3 @@
-
 import { Link, useNavigate } from "react-router-dom";
 import { Store } from "../Store";
 import CheckoutSteps from "../components/CheckoutSteps";
