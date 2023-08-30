@@ -122,9 +122,14 @@ export default function SearchScreen() {
     <div>
       <section className='search-page' >
         <div className='search-filter' >
+<<<<<<< HEAD
         <div>
           <h3>Catégorie</h3>
           
+=======
+          <h3>Catégorie</h3>
+          <div>
+>>>>>>> 8b59bce0276ea6fd1868ce6b8863747ab9e93004
             <ul>
               <li>
                 <Link
