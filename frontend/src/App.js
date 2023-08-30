@@ -18,6 +18,8 @@ import OrderScreen from "./screens/OrderScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import SearchScreen from "./screens/SearchScreen";
+import ProductListScreen from './screens/ProductListScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
 
 // Components
 import SearchBox from "./components/Searchbox";
@@ -140,14 +142,14 @@ function App() {
                           <Link to="/admin/dashboard">Tableau de Bord</Link>
                         </li>
                         <li className="sign-header">
-                          <Link to="/admin/productlist">Catalogue</Link>
+                          <Link to="/admin/products">Catalogue</Link>
                         </li>
                         <li className="sign-header">
                           {" "}
-                          <Link to="/admin/orderlist">Commandes</Link>
+                          <Link to="/admin/order">Commandes</Link>
                         </li>
                         <li className="sign-header">
-                          <Link to="/admin/userlist">Utilisateurs</Link>
+                          <Link to="/admin/user">Utilisateurs</Link>
                         </li>
                       </ul>
                     </div>
@@ -201,6 +203,22 @@ function App() {
                 </AdminRoute>
               }
             ></Route>
+             <Route
+                path="/admin/products"
+                element={
+                  <AdminRoute>
+                    <ProductListScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+              <Route
+                path="/admin/product/:id"
+                element={
+                  <AdminRoute>
+                    <ProductEditScreen />
+                  </AdminRoute>
+                }
+              ></Route>
           </Routes>
         </main>
       </div>

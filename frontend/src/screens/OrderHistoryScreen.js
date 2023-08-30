@@ -53,7 +53,7 @@ export default function OrderHistoryScreen() {
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <table className="table">
+        <table>
           <thead>
             <tr>
               <th>ID</th>

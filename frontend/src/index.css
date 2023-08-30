@@ -59,7 +59,7 @@ li {
 @media screen and (max-width: 560px) {
   main {
     padding: 1rem;
-    margin:0;
+    margin: 0;
   }
 
   .cart-details {
@@ -436,6 +436,7 @@ legend {
 .pagination {
   display: flex;
   justify-content: center;
+  margin: 1rem;
 }
 
 .text-active {
@@ -450,8 +451,8 @@ legend {
     font-size: small;
   }
 
-  .search-filter ul{
-    margin:1rem;
+  .search-filter ul {
+    margin: 1rem;
   }
 
   .search-results-side {
