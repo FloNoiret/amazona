@@ -130,6 +130,12 @@ legend{
   border: 2px solid gold; 
 }
 
+.admin-nav{
+  color:gold; 
+  font-size: 12px;
+  border: gold solid 1px;
+  padding: 0.5rem;
+}
 
 /* Home Page */
 .products {

@@ -17,8 +17,13 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import SearchScreen from './screens/SearchScreen';
+import SearchScreen from "./screens/SearchScreen";
+
+// Components
 import SearchBox from "./components/Searchbox";
+import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardScreen from "./screens/DashboardScreen";
+import AdminRoute from "./components/AdminRoute";
 
 function App() {
   // cart & sign in React Context
@@ -53,7 +58,10 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header>
-          <Link to="/" className="logo-nav"> Amazona</Link>
+          <Link to="/" className="logo-nav">
+            {" "}
+            Amazona
+          </Link>
           <nav>
             <div className="search-nav">
               <div>
@@ -90,7 +98,7 @@ function App() {
 
                 <div>
                   {userInfo ? (
-                    <div title={userInfo.name}  className="right-nav" >
+                    <div title={userInfo.name} className="right-nav">
                       <li className="sign-header">
                         <Link to="/profile">
                           <p>Mon Compte</p>
@@ -117,6 +125,32 @@ function App() {
                     </Link>
                   )}
                 </div>
+                <div>
+                  {/* Admin Nav */}
+                  {userInfo && userInfo.isAdmin && (
+                    <div>
+                      <ul
+                        className="admin-nav"
+                        title="Admin"
+                        id="admin-nav-dropdown"
+                      >
+                        <li className="sign-header">
+                          <Link to="/admin/dashboard">Tableau de Bord</Link>
+                        </li>
+                        <li className="sign-header">
+                          <Link to="/admin/productlist">Catalogue</Link>
+                        </li>
+                        <li className="sign-header">
+                          {" "}
+                          <Link to="/admin/orderlist">Commandes</Link>
+                        </li>
+                        <li className="sign-header">
+                          <Link to="/admin/userlist">Utilisateurs</Link>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </ul>
             </div>
           </nav>
@@ -131,13 +165,40 @@ function App() {
             <Route path="/signup" element={<SignupScreen />} />
             <Route path="/payment" element={<PaymentMethodScreen />}></Route>
             <Route path="/placeorder" element={<PlaceOrderScreen />} />
-            <Route path="/order/:id" element={<OrderScreen />}></Route>
+            <Route
+              path="/order/:id"
+              element={
+                <ProtectedRoute>
+                  <OrderScreen />
+                </ProtectedRoute>
+              }
+            ></Route>
             <Route path="/search" element={<SearchScreen />} />
             <Route
               path="/orderhistory"
-              element={<OrderHistoryScreen />}
+              element={
+                <ProtectedRoute>
+                  <OrderHistoryScreen />
+                </ProtectedRoute>
+              }
             ></Route>
-            <Route path="/profile" element={<ProfileScreen />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <ProfileScreen />
+                </ProtectedRoute>
+              }
+            />
+            {/* Admin Routes */}
+            <Route
+              path="/admin/dashboard"
+              element={
+                <AdminRoute>
+                  <DashboardScreen />
+                </AdminRoute>
+              }
+            ></Route>
           </Routes>
         </main>
       </div>
