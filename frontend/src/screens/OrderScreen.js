@@ -129,7 +129,7 @@ export default function OrderScreen() {
     alert({ error })
   ) : (
     <div>
-      <h1>Commande #{orderId}</h1>
+      <h1 className="order-info-title">Commande #{orderId}</h1>
       <section className="order-details">
         <ul className="order-details-preview">
           <li className="order-details-items">
