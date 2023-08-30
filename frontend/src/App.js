@@ -58,17 +58,19 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header>
+        <nav>
+        
           <Link to="/" className="logo-nav">
             {" "}
             Amazona
           </Link>
-          <nav>
-            <div className="search-nav">
+          
+          <div className="search-nav">
               <div>
-                <ul>
+                <ul className="category-nav">
                   <legend>Categories</legend>
                   {categories.map((category) => (
-                    <li className="category-nav" key={category}>
+                    <li  key={category}>
                       <Link to={`/search?category=${category}`}>
                         {category}
                       </Link>
