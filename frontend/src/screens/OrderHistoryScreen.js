@@ -53,7 +53,7 @@ export default function OrderHistoryScreen() {
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <table>
+        <table className="product-details">
           <thead>
             <tr>
               <th>ID</th>
@@ -78,7 +78,7 @@ export default function OrderHistoryScreen() {
                 <td>
                   <button
                     type="button"
-                    className='btn-gold'
+                    className='btn-gold product-actions'
                     onClick={() => {
                       navigate(`/order/${order._id}`);
                     }}

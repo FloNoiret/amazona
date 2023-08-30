@@ -90,6 +90,22 @@ productRouter.put(
   })
 );
 
+//Delete Product
+productRouter.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      await product.deleteOne();
+      res.send({ message: 'Product Deleted' });
+    } else {
+      res.status(404).send({ message: 'Product Not Found' });
+    }
+  })
+);
+
 // Search Result
 const PAGE_SIZE = 15;
 productRouter.get(

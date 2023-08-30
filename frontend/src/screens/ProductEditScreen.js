@@ -139,7 +139,7 @@ export default function ProductEditScreen() {
 
   return (
     <section className="order-process-form">
-      <h1 className="order-form">Modifier Produit #{productId}</h1>
+      <h1 className="order-info-title">Modifier Produit #{productId}</h1>
 
       {loading ? (
         <p>Veuillez patienter...</p>
@@ -218,7 +218,7 @@ export default function ProductEditScreen() {
           </div>
           <div>
             <button disabled={loadingUpdate} type="submit" className="btn-gold">
-              Update
+              Mettre à jour
             </button>
             {loadingUpdate && <p> Veuillez patienter...</p>}
           </div>
