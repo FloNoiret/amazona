@@ -1,16 +1,14 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { getError } from "./utils";
-import axios from "axios";
 
 // DATA
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Store } from "./Store";
 // WEBSITE PAGE
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import SigninScreen from "./screens/SignInScreen";
-import ShippingAddressScreen from "./screens/ShippingAddressScreen";
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SignupScreen from "./screens/SignUpScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
@@ -36,25 +34,10 @@ function App() {
   const signoutHandler = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
-    localStorage.removeItem("shippingAddress");
-    localStorage.removeItem("paymentMethod");
-    window.location.href = "/signin";
+    localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
+    window.location.href = '/signin';
   };
-
-  // Side Bar
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const { data } = await axios.get(`/api/products/categories`);
-        setCategories(data);
-      } catch (err) {
-        alert(getError(err));
-      }
-    };
-    fetchCategories();
-  }, []);
 
   return (
     <BrowserRouter>

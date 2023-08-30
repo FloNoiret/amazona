@@ -13,6 +13,7 @@ ul {
 
 header {
   background-color: black;
+  padding: 1rem;
   display: flex;
   align-items: center;
 }
@@ -21,6 +22,11 @@ header a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+}
+
+nav {
+  display: flex;
+  width: 100%;
 }
 
 main {
@@ -37,6 +43,18 @@ li {
 }
 
 /* Cart */
+.cart-header {
+  display: flex;
+  padding-left: 1rem;
+  font-weight: 100;
+  width: fit-content;
+}
+
+.cart-number {
+  color: gold;
+  padding-left: 2px;
+  font-size: 12px;
+}
 
 .cart-details {
   display: flex;
@@ -94,9 +112,7 @@ li {
   background-color: lightyellow;
 }
 
-/* NavBar */
-
-nav {
+.sign-header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
