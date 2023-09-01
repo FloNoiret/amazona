@@ -48,32 +48,30 @@ export default function SignupScreen() {
       <h1>Créer un Compte</h1>
 
       <form onSubmit={submitHandler}>
-        <div className="signin-item" controlId="name">
+        <div className="order-form"controlId="name">
           <label>Votre Nom</label>
           <input onChange={(e) => setName(e.target.value)} required />
         </div>
 
-        <div className="signin-item" controlId="email">
+        <div className="order-form" controlId="email">
           <label>Email</label>
           <input
-            className="signin-input"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
           </div>
 
-          <div className="signin-item" controlId="password">
+          <div className="order-form" controlId="password">
           <label>Mot de Passe</label>
           <input
-            className="signin-input"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
 
-          <div className="signin-item" controlId="confirmPassword">
+          <div className="order-form" controlId="confirmPassword">
             <label>Confirmer le Mot de Passe</label>
             <input
               type="password"
@@ -82,10 +80,10 @@ export default function SignupScreen() {
             />
             </div>
 
-        <div className="signin-item">
+        <div className="order-form">
           <button type="submit" className='btn-gold'>Créer un compte</button>
         </div>
-        <div className="signin-item">
+        <div cclassName="order-form">
           Déjà inscrit? {' '}
           <Link to={`/signin?redirect=${redirect}`}>Se Connecter</Link>
         </div>

@@ -75,6 +75,7 @@ li {
 /* Signin Page */
 .signin-page {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 5rem;
 }
@@ -83,6 +84,7 @@ li {
   padding: 1rem;
   padding-left: 5rem;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   width: 100%;
 }
@@ -92,6 +94,13 @@ li {
   border: solid black 1px;
   padding: 5px;
   background-color: lightyellow;
+}
+
+@media screen and (max-width: 560px) {
+  signin-page {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 /* NavBar */
@@ -406,9 +415,9 @@ legend {
   }
 
   .product-actions {
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    padding: 0.2rem; 
+    padding: 0.2rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     font-size: 7px;
